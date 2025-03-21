@@ -21,7 +21,7 @@ jobs:
 
       - name: Configure kubectl for kind
         run: |
-          kubectl cluster-info --context kind-k8s-demo
+          kubectl cluster-info --context kind-kind-k8s-demo
 
       - name: Set up Helm
         uses: azure/setup-helm@v4
