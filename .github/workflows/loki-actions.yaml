@@ -21,6 +21,7 @@ jobs:
 
       - name: Configure kubectl for kind
         run: |
+          export KUBECONFIG=$HOME/.kube/config
           kubectl cluster-info --context kind-k8s-demo
 
       - name: Set up Helm
