@@ -32,6 +32,9 @@ jobs:
         with:
           version: v3.14.0  # Adjust to the latest stable version
 
+      - name: Update kube config
+        run: aws eks update-kubeconfig --name primuslearning
+
       - name: Deploy Loki with Helm
         run: |
           helm repo add grafana https://grafana.github.io/helm-charts
