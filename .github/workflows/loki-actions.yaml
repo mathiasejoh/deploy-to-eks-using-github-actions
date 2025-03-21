@@ -14,15 +14,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v3
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v2.0
         with:
-          version: v1.29.0  # Adjust based on the latest stable version
-
-      - name: Configure kubectl for kind
-        run: |
-          export KUBECONFIG=$HOME/.kube/config
-          kubectl cluster-info --context kind-k8s-demo
+          version: 'v1.24.0' # default is latest stable
+        id: install
+  
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
 
       - name: Set up Helm
         uses: azure/setup-helm@v4
