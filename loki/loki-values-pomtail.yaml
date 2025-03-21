@@ -1,0 +1,27 @@
+loki:
+  enabled: true
+  persistence:
+     enabled: true 
+     accessMode:
+       - ReadWriteOnce:
+     size: 1Gi
+
+promtail:
+  enabled: true
+  config:
+    logLevel: info
+    serverPort: 3101
+    clients:
+      - url: http://{{ .Release.Name }}:3100/loki/api/v1/push
+
+fluent-bit:
+  enabled: false
+
+grafana:
+  enabled: true
+  sidecar:
+    datasources:
+      enabled: true
+  image:
+    tag: latest
+
