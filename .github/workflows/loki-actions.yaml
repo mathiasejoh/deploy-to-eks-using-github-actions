@@ -41,7 +41,7 @@ jobs:
         run: |
           helm repo add grafana https://grafana.github.io/helm-charts
           helm repo update
-          helm uninstall atlantis --namespace loki --ignore-not-found
+          helm uninstall loki --namespace loki --ignore-not-found
           sleep 60s
           helm upgrade --install loki grafana/loki-stack \
             --namespace loki --create-namespace \
