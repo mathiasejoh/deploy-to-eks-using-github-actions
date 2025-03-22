@@ -1,7 +1,7 @@
 loki:
   enabled: true
   persistence:
-    enabled: true
+    enabled: false
     accessMode:
     - ReadWriteOnce:
     size: 1Gi
