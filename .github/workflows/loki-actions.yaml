@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - "loki/**"
-      
+
 jobs:
   deploy-loki:
     runs-on: ubuntu-latest
@@ -43,4 +43,4 @@ jobs:
           helm repo update
           helm upgrade --install loki grafana/loki-stack \
             --namespace loki --create-namespace \
-            --values loki-values-pomtail  # Specify the correct path here
+
