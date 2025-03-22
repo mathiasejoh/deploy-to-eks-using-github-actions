@@ -1,9 +1,11 @@
-name: Deploy Loki to kind
+name: Deploy Loki to aws
 
 on:
   push:
     branches:
       - main
+    paths:
+      - "loki/**"
   workflow_dispatch:
 
 jobs:
@@ -41,4 +43,4 @@ jobs:
           helm repo update
           helm upgrade --install loki grafana/loki-stack \
             --namespace loki --create-namespace \
-            --values loki/loki-values-pomtail  # Specify the correct path here
+            --values loki-values-pomtail  # Specify the correct path here
